@@ -1,222 +1,208 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!-- Hero Section -->
-<section id="home" class="hero">
+<!-- القسم 1: الهيرو مع صورتك -->
+<section class="hero">
     <div class="container">
-        <div class="hero-content">
-            <h1>مرحباً، أنا <span class="highlight">{{ data.name }}</span></h1>
-            <p>{{ data.title }} | {{ data.years_experience }} سنوات من الخبرة</p>
-            <p class="hero-description">{{ data.bio }}</p>
-            <div class="cta-buttons">
-                <a href="#projects" class="btn btn-primary">
-                    <i class="fas fa-eye"></i> عرض أعمالي
-                </a>
-                <a href="#contact" class="btn btn-secondary">
-                    <i class="fas fa-download"></i> تواصل معي
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- About Section -->
-<section id="about" class="section">
-    <div class="container">
-        <div class="section-title">
-            <h2>معلومات عني</h2>
-            <p>تعرف أكثر على خبراتي وإنجازاتي المهنية</p>
-        </div>
-        <div class="about-content">
-            <div class="about-image">
-                <img src="{{ url_for('static', filename='images/profile.jpg') }}" 
-                     alt="{{ data.name }}" 
-                     class="profile-img"
-                     onerror="this.src='https://ui-avatars.com/api/?name={{ data.name }}&size=300&background=667eea&color=fff'">
-            </div>
-            <div class="about-text">
-                <h3>مرحباً بك في عالمي الرقمي</h3>
-                <p>{{ data.bio }}</p>
-                <p>أمتلك خبرة تزيد عن {{ data.years_experience }} سنوات في تطوير الويب، عملت خلالها على أكثر من {{ data.projects_completed }} مشروع ناجح.</p>
-                
-                <div class="about-stats">
-                    <div class="stat">
-                        <span class="stat-number">{{ data.years_experience }}</span>
-                        <span class="stat-label">سنوات خبرة</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">{{ data.projects_completed }}</span>
-                        <span class="stat-label">مشروع مكتمل</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">{{ data.happy_clients }}</span>
-                        <span class="stat-label">عميل سعيد</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Services Section -->
-<section id="services" class="section bg-light">
-    <div class="container">
-        <div class="section-title">
-            <h2>خدماتي</h2>
-            <p>أقدم مجموعة متكاملة من خدمات تطوير الويب</p>
-        </div>
-        <div class="services-grid">
-            {% for service in services %}
-            <div class="service-card">
-                <div class="service-icon">
-                    <span>{{ service.icon }}</span>
-                </div>
-                <h3>{{ service.title }}</h3>
-                <p>{{ service.description }}</p>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
-<!-- Skills Section -->
-<section id="skills" class="section">
-    <div class="container">
-        <div class="section-title">
-            <h2>مهاراتي التقنية</h2>
-            <p>مجموعة المهارات التي أتقنها وأستخدمها في مشاريعي</p>
-        </div>
-        <div class="skills-container">
-            {% set categories = skills|map(attribute='category')|unique %}
-            {% for category in categories %}
-            <div class="skill-category">
-                <h4>{{ category }}</h4>
-                <div class="skills-list">
-                    {% for skill in skills if skill.category == category %}
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">{{ skill.name }}</span>
-                            <span class="skill-percentage">{{ skill.level }}%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: {{ skill.level }}%"></div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
-<!-- Projects Section -->
-<section id="projects" class="section bg-light">
-    <div class="container">
-        <div class="section-title">
-            <h2>أعمالي السابقة</h2>
-            <p>مجموعة مختارة من المشاريع التي قمت بتطويرها</p>
-        </div>
-        
-        <div class="projects-grid">
-            {% for project in projects %}
-            <div class="project-card" data-category="{{ project.category }}">
-                <div class="project-image">
-                    <img src="{{ url_for('static', filename='images/projects/' + project.image) }}" 
-                         alt="{{ project.title }}"
-                         onerror="this.style.background='linear-gradient(135deg, #667eea 0%, #764ba2 100%)'">
-                </div>
-                <div class="project-content">
-                    <div class="project-tags">
-                        {% for tech in project.technologies[:3] %}
-                        <span class="tag">{{ tech }}</span>
-                        {% endfor %}
-                    </div>
-                    <h3>{{ project.title }}</h3>
-                    <p>{{ project.description }}</p>
-                    <div class="project-links">
-                        <a href="{{ project.live_url }}" target="_blank" class="project-link">
-                            <i class="fas fa-external-link-alt"></i> عرض الموقع
-                        </a>
-                        <a href="{{ project.github_url }}" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i> الكود
-                        </a>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-        
-        <div class="text-center" style="margin-top: 50px;">
-            <a href="{{ url_for('projects_page') }}" class="btn btn-primary">
-                <i class="fas fa-list"></i> عرض جميع المشاريع
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- Contact CTA -->
-<section id="contact" class="section">
-    <div class="container">
-        <div class="section-title">
-            <h2>لنتواصل</h2>
-            <p>هل لديك مشروع أو فكرة تريد تنفيذها؟ دعنا نعمل معاً</p>
-        </div>
-        
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>معلومات التواصل</h3>
-                <p>أنا دائماً متاح لمناقشة المشاريع الجديدة، أفكار الإبداعية أو فرص العمل.</p>
-                
-                <div class="contact-details">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h4>البريد الإلكتروني</h4>
-                            <p>{{ data.email }}</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div>
-                            <h4>الهاتف</h4>
-                            <p>{{ data.phone }}</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div>
-                            <h4>الموقع</h4>
-                            <p>{{ data.location }}</p>
-                        </div>
-                    </div>
+        <div class="row align-items-center">
+            <!-- الصورة الشخصية على اليسار -->
+            <div class="col-md-4 text-center">
+                <div class="profile-container">
+                    <!-- ضع صورتك هنا -->
+                    <img src="{{ url_for('static', filename='images/profile.jpg') }}" 
+                         alt="Ahmad Zaki"
+                         class="profile-image"
+                         onerror="this.src='https://ui-avatars.com/api/?name=Ahmad+Zaki&size=300&background=000&color=FFD700'">
+                    <!-- إذا ما عندك صورة، بتستخدم الصورة الافتراضية -->
                 </div>
             </div>
             
-            <div class="contact-form">
-                <form method="POST" action="{{ url_for('contact') }}">
-                    <div class="form-group">
-                        <label for="name">الاسم الكامل</label>
-                        <input type="text" id="name" name="name" required>
+            <!-- النص على اليمين -->
+            <div class="col-md-8">
+                <h1 class="gold-text">Ahmad <span class="silver-text">Zaki</span></h1>
+                <h2 class="tagline">Digital Artisan & Innovation Architect</h2>
+                <p class="lead">{{ data.bio }}</p>
+                
+                <!-- إحصائيات -->
+                <div class="stats">
+                    <div class="stat-item">
+                        <h3>{{ data.years }}</h3>
+                        <p>Years Experience</p>
                     </div>
-                    <div class="form-group">
-                        <label for="email">البريد الإلكتروني</label>
-                        <input type="email" id="email" name="email" required>
+                    <div class="stat-item">
+                        <h3>{{ data.projects }}</h3>
+                        <p>Projects Delivered</p>
                     </div>
-                    <div class="form-group">
-                        <label for="message">الرسالة</label>
-                        <textarea id="message" name="message" required></textarea>
+                    <div class="stat-item">
+                        <h3>{{ data.clients }}</h3>
+                        <p>Happy Clients</p>
                     </div>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-paper-plane"></i> إرسال الرسالة
-                    </button>
-                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- القسم 2: عني -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">About <span class="gold-text">Me</span></h2>
+        <div class="gold-card">
+            <p>I am a passionate creator who believes in the power of technology to transform ideas into reality. My journey combines technical expertise with artistic vision.</p>
+            
+            <!-- مهارات -->
+            <div class="skills-grid">
+                <div class="skill">
+                    <h4>Web Development</h4>
+                    <div class="progress gold-progress" style="width: 95%"></div>
+                </div>
+                <div class="skill">
+                    <h4>UI/UX Design</h4>
+                    <div class="progress gold-progress" style="width: 90%"></div>
+                </div>
+                <div class="skill">
+                    <h4>Creative Coding</h4>
+                    <div class="progress gold-progress" style="width: 85%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- القسم 3: المشاريع الإبداعية -->
+<section class="section bg-dark">
+    <div class="container">
+        <h2 class="section-title">Creative <span class="gold-text">Projects</span></h2>
+        <div class="row">
+            {% for project in projects %}
+            <div class="col-md-4 mb-4">
+                <div class="project-card gold-card">
+                    <div class="project-icon">{{ project.icon }}</div>
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.description }}</p>
+                    <div class="tech-tags">
+                        {% for tech in project.tech %}
+                        <span class="tag">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- القسم 4: تطبيقات مسلية -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Fun <span class="gold-text">Applications</span></h2>
+        <div class="row">
+            {% for app in apps %}
+            <div class="col-md-4 mb-4">
+                <div class="app-card silver-card">
+                    <div class="app-icon">{{ app.icon }}</div>
+                    <h4>{{ app.name }}</h4>
+                    <p>{{ app.description }}</p>
+                    <a href="{{ app.link }}" class="gold-btn btn-sm">Try It</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- القسم 5: أقوال ملهمة -->
+<section class="section bg-dark">
+    <div class="container">
+        <h2 class="section-title">Inspirational <span class="gold-text">Quotes</span></h2>
+        <div class="quote-slider">
+            <div class="quote">
+                <p>"The only way to do great work is to love what you do."</p>
+                <p class="quote-author">- Steve Jobs</p>
+            </div>
+            <div class="quote">
+                <p>"Innovation distinguishes between a leader and a follower."</p>
+                <p class="quote-author">- Steve Jobs</p>
+            </div>
+        </div>
+        
+        <!-- أيقونات الناجحين -->
+        <div class="icons-grid">
+            <div class="icon-item">
+                <i class="fas fa-crown"></i>
+                <p>Leaders</p>
+            </div>
+            <div class="icon-item">
+                <i class="fas fa-lightbulb"></i>
+                <p>Innovators</p>
+            </div>
+            <div class="icon-item">
+                <i class="fas fa-rocket"></i>
+                <p>Entrepreneurs</p>
+            </div>
+            <div class="icon-item">
+                <i class="fas fa-paint-brush"></i>
+                <p>Artists</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- القسم 6: وسائل التواصل -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Get In <span class="gold-text">Touch</span></h2>
+        <div class="contact-grid">
+            {% for contact in contacts %}
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fab fa-{{ contact.icon }}"></i>
+                </div>
+                <h4>{{ contact.platform }}</h4>
+                <p>{{ contact.username }}</p>
+                <a href="{{ contact.link }}" target="_blank" class="contact-link">
+                    <i class="fas fa-external-link-alt"></i> Connect
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- نموذج التواصل -->
+        <div class="gold-card mt-5">
+            <h3 class="text-center mb-4">Send Me a Message</h3>
+            <form id="contactForm">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="text" placeholder="Your Name" class="form-input">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="email" placeholder="Your Email" class="form-input">
+                    </div>
+                </div>
+                <textarea placeholder="Your Message" class="form-input mt-3"></textarea>
+                <button type="submit" class="gold-btn mt-3">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- القسم 7: صور ونماذج تصميم -->
+<section class="section bg-dark">
+    <div class="container">
+        <h2 class="section-title">Design <span class="gold-text">Gallery</span></h2>
+        <div class="design-grid">
+            <!-- ضع هنا صور تصميماتك -->
+            <div class="design-item">
+                <div class="design-placeholder">
+                    <i class="fas fa-palette"></i>
+                    <p>UI Design Samples</p>
+                </div>
+            </div>
+            <div class="design-item">
+                <div class="design-placeholder">
+                    <i class="fas fa-code"></i>
+                    <p>Code Art</p>
+                </div>
             </div>
         </div>
     </div>
