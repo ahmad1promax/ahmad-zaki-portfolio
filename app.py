@@ -1,113 +1,113 @@
-from flask import Flask, render_template, request, jsonify, session
-import random
+# ============================================================
+# app.py
+# Backend Python Flask for Ahmed Zaki Legendary Portfolio
+# Author: Ahmed Zaki
+# Purpose: Serve the frontend, provide API endpoints,
+#          log visitors, and enable dynamic interaction
+# ============================================================
+
+from flask import Flask, render_template, jsonify, request
 from datetime import datetime
 import os
 
-app = Flask(__name__, 
-            template_folder='templates',
-            static_folder='static')
-app.secret_key = os.environ.get('SECRET_KEY') or 'your-secret-key-here'
-app.config['SESSION_PERMANENT'] = False
+# ============================================================
+# CREATE FLASK APP
+# ============================================================
+app = Flask(__name__)
 
-# ========== بيانات الموقع (تعدل هنا) ==========
-PORTFOLIO_DATA = {
-    "name": "Ahmad Zaki",
-    "title": "Digital Creator & Full-Stack Developer",
-    "tagline": "Crafting Digital Masterpieces",
-    "email": "a7med1.zaki@gmail.com",  # ← غير الإيميل هنا
-    "phone": "+7 918 578-69-26",  # ← غير الرقم هنا
-    "location": "Global Nomad",
-    "bio": "I create immersive digital experiences that blend art, technology, and innovation.",
-    "years": "5+",
-    "projects": "100+",
-    "clients": "80+"
-}
-
-# ========== المشاريع الإبداعية ==========
-CREATIVE_PROJECTS = [
-    {
-        "id": 1,
-        "title": "Quantum Canvas",
-        "category": "Interactive Art",
-        "description": "AI-generated art platform with real-time collaboration",
-        "tech": ["Python", "TensorFlow", "WebGL", "WebRTC"],
-        "icon": "🎨",
-        "image": "project1.jpg"  # ← ضع صورتك هنا: static/images/projects/project1.jpg
-    }
-]
-
-# ========== تطبيقات مسلية ==========
-ENTERTAINMENT_APPS = [
-    {
-        "name": "Code Symphony",
-        "type": "Music Visualizer",
-        "description": "Visualize code execution as music",
-        "icon": "🎵",
-        "link": "#"
-    }
-]
-
-# ========== وسائل التواصل ==========
-CONTACT_METHODS = [
-    {
-        "platform": "WhatsApp",
-        "username": "+7 918 578-69-26",
-        "link": "https://wa.me/79185786926",
-        "icon": "whatsapp",
-        "color": "#25D366"
-    },
-    {
-        "platform": "Telegram",
-        "username": "@ahmed_zaki",  # ← ضع يوزر تيليجرام الحقيقي
-        "link": "https://t.me/ahmed_zaki",
-        "icon": "telegram",
-        "color": "#0088cc"
-    },
-    {
-        "platform": "Email",
-        "username": "a7med1.zaki@gmail.com",
-        "link": "mailto:a7med1.zaki@gmail.com",
-        "icon": "envelope",
-        "color": "#EA4335"
-    }
-]
-
-# ========== مقولات ملهمة ==========
-INSPIRATIONAL_QUOTES = [
-    {
-        "text": "The only way to do great work is to love what you do.",
-        "author": "Steve Jobs",
-        "category": "Success"
-    },
-    {
-        "text": "Innovation distinguishes between a leader and a follower.",
-        "author": "Steve Jobs",
-        "category": "Innovation"
-    }
-]
-
-@app.route('/')
+# ============================================================
+# ROUTE: HOME PAGE
+# ============================================================
+@app.route("/")
 def home():
-    """الصفحة الرئيسية - هنا تعرض كل المحتوى"""
-    return render_template('index.html',
-                         data=PORTFOLIO_DATA,
-                         projects=CREATIVE_PROJECTS,
-                         apps=ENTERTAINMENT_APPS,
-                         contacts=CONTACT_METHODS,
-                         quotes=INSPIRATIONAL_QUOTES,
-                         current_year=datetime.now().year)
+    """
+    🔴 يعرض الصفحة الرئيسية index.html
+    Frontend يستهلك هذا الملف
+    """
+    return render_template("index.html")
 
-# ========== مسارات API ==========
-@app.route('/api/visitor')
-def visitor_api():
-    """API لحساب الزوار (اختياري)"""
-    return jsonify({"visitors": random.randint(1000, 5000)})
 
-@app.route('/api/quote')
-def random_quote():
-    """API للحصول على مقولة عشوائية"""
-    quotes = INSPIRATIONAL_QUOTES
-    return jsonify(random.choice(quotes))
+# ============================================================
+# API: PROFILE DATA
+# ============================================================
+@app.route("/api/profile")
+def profile():
+    """
+    🔴 يعرض بياناتك الشخصية
+    يمكن استدعاؤها في core.js
+    """
+    data = {
+        "name": "Ahmed Zaki",
+        "email": "a7med1.zaki@gmail.com",
+        "phone": "+79185786926",
+        "fields": [
+            "Design",
+            "Animation",
+            "Programming",
+            "Artificial Intelligence"
+        ],
+        "vision": "Creativity is freedom. Technology is power."
+    }
+    return jsonify(data)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+
+# ============================================================
+# API: LOG VISITOR
+# ============================================================
+@app.route("/api/visit", methods=["POST"])
+def visit():
+    """
+    🔴 تسجيل كل زيارة من لجنة المنح أو الزوار
+    يتم الطباعة في الكونسول ويمكن لاحقًا تخزينها في قاعدة بيانات
+    """
+    visitor_ip = request.remote_addr
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    print("===================================")
+    print("🚀 New Visitor Detected")
+    print(f"IP Address: {visitor_ip}")
+    print(f"Time: {timestamp}")
+    print("===================================")
+
+    # يمكن لاحقًا تخزين البيانات في ملف أو قاعدة بيانات
+    return jsonify({"status": "logged", "ip": visitor_ip, "time": timestamp})
+
+
+# ============================================================
+# API: DYNAMIC PROJECTS (Optional)
+# ============================================================
+@app.route("/api/projects")
+def projects():
+    """
+    🔴 API لإرسال المشاريع ديناميكيًا للواجهة
+    يمكن تعديل أو إضافة مشاريع لاحقًا
+    """
+    project_list = [
+        {
+            "title": "Advanced AI Assistant",
+            "desc": "An AI-based project enhancing creativity and productivity."
+        },
+        {
+            "title": "Cinematic Motion Design",
+            "desc": "A full animation project with storytelling through visuals."
+        },
+        {
+            "title": "Web Platform UX",
+            "desc": "Modern web platform focusing on performance and aesthetics."
+        }
+    ]
+    return jsonify(project_list)
+
+
+# ============================================================
+# RUN APP
+# ============================================================
+if __name__ == "__main__":
+    """
+    🔴 يمكنك تشغيل التطبيق محليًا بـ:
+        python app.py
+    وسيعمل على http://127.0.0.1:5000
+    عند رفعه على Render:
+        استخدم Gunicorn أو إعدادات Render الافتراضية
+    """
+    app.run(debug=True, host="0.0.0.0", port=5000)
