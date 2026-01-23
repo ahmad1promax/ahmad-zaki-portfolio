@@ -1,150 +1,113 @@
-from flask import Flask, render_template, request, flash, redirect, url_for
-import os
+from flask import Flask, render_template, request, jsonify, session
+import random
 from datetime import datetime
+import os
 
 app = Flask(__name__, 
             template_folder='templates',
             static_folder='static')
-app.secret_key = os.environ.get('SECRET_KEY') or 'dev-secret-key-2024'
+app.secret_key = os.environ.get('SECRET_KEY') or 'your-secret-key-here'
+app.config['SESSION_PERMANENT'] = False
 
-# بيانات الموقع (يمكن تحويلها لقاعدة بيانات لاحقاً)
-SITE_DATA = {
-    "name": "أحمد زكي",
-    "title": "مطور ويب ومصمم واجهات",
-    "email": "ahmed@example.com",
-    "phone": "+20 100 000 0000",
-    "location": "القاهرة، مصر",
-    "bio": "مطور ويب متخصص في بناء تطبيقات ويب حديثة باستخدام Python وFlask. أحول الأفكار إلى واقع رقمي.",
-    "years_experience": "3+",
-    "projects_completed": "50+",
-    "happy_clients": "40+"
+# ========== بيانات الموقع (تعدل هنا) ==========
+PORTFOLIO_DATA = {
+    "name": "Ahmad Zaki",
+    "title": "Digital Creator & Full-Stack Developer",
+    "tagline": "Crafting Digital Masterpieces",
+    "email": "a7med1.zaki@gmail.com",  # ← غير الإيميل هنا
+    "phone": "+7 918 578-69-26",  # ← غير الرقم هنا
+    "location": "Global Nomad",
+    "bio": "I create immersive digital experiences that blend art, technology, and innovation.",
+    "years": "5+",
+    "projects": "100+",
+    "clients": "80+"
 }
 
-PROJECTS = [
+# ========== المشاريع الإبداعية ==========
+CREATIVE_PROJECTS = [
     {
         "id": 1,
-        "title": "متجر إلكتروني",
-        "description": "متجر إلكتروني متكامل مع نظام دفع وإدارة طلبات",
-        "category": "Web App",
-        "technologies": ["Python", "Flask", "JavaScript", "MySQL"],
-        "image": "project1.jpg",
-        "live_url": "https://example.com",
-        "github_url": "https://github.com"
-    },
-    {
-        "id": 2,
-        "title": "منصة تعليمية",
-        "description": "منصة للدورات التعليمية مع نظام متابعة الطلاب",
-        "category": "Education",
-        "technologies": ["Python", "Django", "React", "PostgreSQL"],
-        "image": "project2.jpg",
-        "live_url": "https://example.com",
-        "github_url": "https://github.com"
-    },
-    {
-        "id": 3,
-        "title": "تطبيق إدارة المهام",
-        "description": "تطبيق ويب لإدارة المهام والمشاريع الشخصية",
-        "category": "Productivity",
-        "technologies": ["Python", "Flask", "SQLite", "Bootstrap"],
-        "image": "project3.jpg",
-        "live_url": "https://example.com",
-        "github_url": "https://github.com"
+        "title": "Quantum Canvas",
+        "category": "Interactive Art",
+        "description": "AI-generated art platform with real-time collaboration",
+        "tech": ["Python", "TensorFlow", "WebGL", "WebRTC"],
+        "icon": "🎨",
+        "image": "project1.jpg"  # ← ضع صورتك هنا: static/images/projects/project1.jpg
     }
 ]
 
-SKILLS = [
-    {"name": "Python", "level": 90, "category": "Backend"},
-    {"name": "Flask/Django", "level": 85, "category": "Backend"},
-    {"name": "JavaScript", "level": 80, "category": "Frontend"},
-    {"name": "HTML/CSS", "level": 95, "category": "Frontend"},
-    {"name": "SQL/MySQL", "level": 75, "category": "Database"},
-    {"name": "Git/GitHub", "level": 85, "category": "Tools"},
-    {"name": "Linux/Server", "level": 70, "category": "DevOps"},
-    {"name": "UI/UX Design", "level": 65, "category": "Design"}
+# ========== تطبيقات مسلية ==========
+ENTERTAINMENT_APPS = [
+    {
+        "name": "Code Symphony",
+        "type": "Music Visualizer",
+        "description": "Visualize code execution as music",
+        "icon": "🎵",
+        "link": "#"
+    }
 ]
 
-SERVICES = [
+# ========== وسائل التواصل ==========
+CONTACT_METHODS = [
     {
-        "icon": "💻",
-        "title": "تطوير الويب",
-        "description": "بناء تطبيقات ويب متكاملة ومواقع ديناميكية"
+        "platform": "WhatsApp",
+        "username": "+7 918 578-69-26",
+        "link": "https://wa.me/79185786926",
+        "icon": "whatsapp",
+        "color": "#25D366"
     },
     {
-        "icon": "📱",
-        "title": "تطبيقات متجاوبة",
-        "description": "تصميم متجاوب يعمل على جميع الأجهزة"
+        "platform": "Telegram",
+        "username": "@ahmed_zaki",  # ← ضع يوزر تيليجرام الحقيقي
+        "link": "https://t.me/ahmed_zaki",
+        "icon": "telegram",
+        "color": "#0088cc"
     },
     {
-        "icon": "🔧",
-        "title": "صيانة المواقع",
-        "description": "صيانة دورية وتحسين أداء المواقع"
+        "platform": "Email",
+        "username": "a7med1.zaki@gmail.com",
+        "link": "mailto:a7med1.zaki@gmail.com",
+        "icon": "envelope",
+        "color": "#EA4335"
+    }
+]
+
+# ========== مقولات ملهمة ==========
+INSPIRATIONAL_QUOTES = [
+    {
+        "text": "The only way to do great work is to love what you do.",
+        "author": "Steve Jobs",
+        "category": "Success"
     },
     {
-        "icon": "🎨",
-        "title": "تصميم واجهات",
-        "description": "تصميم واجهات مستخدم جذابة وسهلة الاستخدام"
+        "text": "Innovation distinguishes between a leader and a follower.",
+        "author": "Steve Jobs",
+        "category": "Innovation"
     }
 ]
 
 @app.route('/')
 def home():
-    current_year = datetime.now().year
-    return render_template('index.html', 
-                         data=SITE_DATA,
-                         projects=PROJECTS[:3],
-                         skills=SKILLS,
-                         services=SERVICES,
-                         current_year=current_year)
+    """الصفحة الرئيسية - هنا تعرض كل المحتوى"""
+    return render_template('index.html',
+                         data=PORTFOLIO_DATA,
+                         projects=CREATIVE_PROJECTS,
+                         apps=ENTERTAINMENT_APPS,
+                         contacts=CONTACT_METHODS,
+                         quotes=INSPIRATIONAL_QUOTES,
+                         current_year=datetime.now().year)
 
-@app.route('/projects')
-def projects_page():
-    return render_template('projects.html', 
-                         projects=PROJECTS,
-                         data=SITE_DATA)
+# ========== مسارات API ==========
+@app.route('/api/visitor')
+def visitor_api():
+    """API لحساب الزوار (اختياري)"""
+    return jsonify({"visitors": random.randint(1000, 5000)})
 
-@app.route('/project/<int:project_id>')
-def project_detail(project_id):
-    project = next((p for p in PROJECTS if p['id'] == project_id), None)
-    if project:
-        return render_template('project_detail.html', 
-                             project=project,
-                             data=SITE_DATA)
-    return redirect(url_for('projects_page'))
-
-@app.route('/contact', methods=['GET', 'POST'])
-def contact():
-    if request.method == 'POST':
-        name = request.form.get('name')
-        email = request.form.get('email')
-        message = request.form.get('message')
-        
-        # هنا يمكن إضافة إرسال الإيميل أو حفظ في قاعدة بيانات
-        flash('شكراً على رسالتك! سأرد عليك قريباً.', 'success')
-        return redirect(url_for('contact'))
-    
-    return render_template('contact.html', data=SITE_DATA)
-
-@app.route('/api/contact', methods=['POST'])
-def api_contact():
-    # API endpoint للاتصال (للاستخدام مع JavaScript)
-    data = request.json
-    # معالجة البيانات هنا
-    return {"message": "تم استلام رسالتك بنجاح", "status": "success"}
-
-# Error Handlers
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html', data=SITE_DATA), 404
-
-@app.errorhandler(500)
-def server_error(e):
-    return render_template('500.html', data=SITE_DATA), 500
-
-# Context Processor لتمرير البيانات لكل الصفحات
-@app.context_processor
-def inject_data():
-    return dict(data=SITE_DATA, current_year=datetime.now().year)
+@app.route('/api/quote')
+def random_quote():
+    """API للحصول على مقولة عشوائية"""
+    quotes = INSPIRATIONAL_QUOTES
+    return jsonify(random.choice(quotes))
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=True)
