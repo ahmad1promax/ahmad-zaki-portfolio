@@ -1,0 +1,308 @@
+/* ============================================================
+   main.css
+   Base Dark Theme Stylesheet
+   Project: Legendary Creative Portfolio
+   Author: Ahmed Zaki
+   ============================================================ */
+
+
+/* ============================================================
+   RESET & GLOBAL SETTINGS
+   ============================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0b0b0b;
+    color: #e5e5e5;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+
+h1, h2, h3, h4 {
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+}
+
+h3 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 1.1rem;
+    color: #cfcfcf;
+    margin-bottom: 20px;
+}
+
+
+/* ============================================================
+   MUSIC BUTTON
+   ============================================================ */
+
+.music-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 14px 24px;
+    background: linear-gradient(45deg, gold, silver);
+    color: #000;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 9999;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.music-button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+}
+
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+
+.hero {
+    height: 100vh;
+    width: 100%;
+    background: radial-gradient(circle at top, #1a1a1a, #050505);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-inner {
+    max-width: 900px;
+    padding: 40px;
+}
+
+.hero h1 {
+    color: gold;
+    margin-bottom: 20px;
+}
+
+.hero h2 {
+    color: silver;
+    font-weight: 400;
+}
+
+.hero p {
+    margin-top: 25px;
+    font-size: 1.2rem;
+}
+
+
+/* ============================================================
+   SECTIONS BASE STYLE
+   ============================================================ */
+
+section {
+    padding: 100px 12%;
+    position: relative;
+}
+
+section::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 12%;
+    width: 76%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+
+/* ============================================================
+   ABOUT SECTION
+   ============================================================ */
+
+.about {
+    text-align: center;
+}
+
+.profile-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin: 30px 0;
+    object-fit: cover;
+}
+
+
+/* ============================================================
+   VISION SECTION
+   ============================================================ */
+
+.vision ul {
+    list-style: none;
+    margin-top: 30px;
+}
+
+.vision li {
+    font-size: 1.2rem;
+    margin: 15px 0;
+    color: #d4d4d4;
+}
+
+.vision li::before {
+    content: "➤ ";
+    color: gold;
+}
+
+
+/* ============================================================
+   FIELDS SECTION
+   ============================================================ */
+
+.fields-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+.field-card {
+    background: #141414;
+    padding: 35px;
+    border-radius: 16px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.field-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.field-card h3 {
+    color: gold;
+}
+
+
+/* ============================================================
+   PROJECTS SECTION
+   ============================================================ */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.project-card {
+    background: linear-gradient(160deg, #111, #1a1a1a);
+    padding: 40px;
+    border-radius: 20px;
+    transition: all 0.4s ease;
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 35px rgba(255, 215, 0, 0.15);
+}
+
+.project-card h3 {
+    color: silver;
+}
+
+
+/* ============================================================
+   QUOTES SECTION
+   ============================================================ */
+
+.quotes blockquote {
+    background: #121212;
+    padding: 30px;
+    margin: 25px 0;
+    border-left: 4px solid gold;
+    font-style: italic;
+}
+
+
+/* ============================================================
+   SCHOLARSHIPS SECTION
+   ============================================================ */
+
+.scholarships p {
+    max-width: 900px;
+}
+
+
+/* ============================================================
+   CONTACT SECTION
+   ============================================================ */
+
+.contact p {
+    font-size: 1.2rem;
+}
+
+.contact p:hover {
+    color: gold;
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.footer {
+    text-align: center;
+    padding: 40px;
+    background: #050505;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+
+/* ============================================================
+   RESPONSIVE DESIGN
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    h1 {
+        font-size: 2.8rem;
+    }
+
+    h2 {
+        font-size: 2.2rem;
+    }
+
+    section {
+        padding: 80px 8%;
+    }
+
+    .music-button {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+}
+
+/* ============================================================
+   END OF FILE
+   ============================================================ */
