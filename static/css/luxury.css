@@ -1,0 +1,247 @@
+/* ============================================================
+   luxury.css
+   Luxury Gold & Silver Theme for Ahmed Zaki Portfolio
+   Author: Ahmed Zaki
+   Purpose: Elegant, cinematic, and inspiring visual theme
+   ============================================================ */
+
+/* ============================================================
+   GLOBAL LUXURY STYLING
+   ============================================================ */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Segoe UI', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+h1 {
+    font-size: 4rem;
+    background: linear-gradient(90deg, gold, silver);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textGlow 3s ease-in-out infinite alternate;
+}
+
+h2 {
+    font-size: 2.8rem;
+    background: linear-gradient(90deg, silver, gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 25px;
+}
+
+h3 {
+    font-size: 1.6rem;
+    color: silver;
+}
+
+/* ============================================================
+   TEXT EFFECTS
+   ============================================================ */
+
+@keyframes textGlow {
+    0% {
+        text-shadow: 0 0 10px gold, 0 0 20px silver;
+    }
+    50% {
+        text-shadow: 0 0 20px gold, 0 0 40px silver;
+    }
+    100% {
+        text-shadow: 0 0 10px gold, 0 0 20px silver;
+    }
+}
+
+p {
+    color: #d0d0d0;
+}
+
+/* ============================================================
+   BUTTON STYLING
+   ============================================================ */
+
+.music-button {
+    background: linear-gradient(45deg, gold, silver);
+    color: #000;
+    font-weight: bold;
+    border-radius: 30px;
+    padding: 15px 28px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5), 0 0 10px rgba(192,192,192,0.5);
+    transition: all 0.3s ease-in-out;
+}
+
+.music-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.8), 0 0 15px rgba(192,192,192,0.6);
+}
+
+/* ============================================================
+   HERO SECTION LUXURY
+   ============================================================ */
+
+.hero {
+    background: radial-gradient(circle at top, #111, #000);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 5%;
+}
+
+.hero h1 {
+    font-size: 4.5rem;
+}
+
+.hero h2 {
+    font-size: 2rem;
+    margin-top: 20px;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-top: 25px;
+    color: #cfcfcf;
+}
+
+/* ============================================================
+   PROFILE IMAGE
+   ============================================================ */
+
+.profile-img {
+    border: 5px solid gold;
+    box-shadow: 0 0 30px rgba(255,215,0,0.7);
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 45px rgba(255,215,0,0.9);
+}
+
+/* ============================================================
+   FIELDS SECTION LUXURY
+   ============================================================ */
+
+.fields-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.field-card {
+    background: linear-gradient(145deg, #1a1a1a, #111);
+    border-radius: 18px;
+    padding: 40px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.field-card h3 {
+    color: gold;
+}
+
+.field-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 15px 35px rgba(255,215,0,0.3), 0 5px 20px rgba(192,192,192,0.2);
+}
+
+/* ============================================================
+   PROJECTS SECTION LUXURY
+   ============================================================ */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 35px;
+}
+
+.project-card {
+    background: linear-gradient(160deg, #0f0f0f, #1a1a1a);
+    border-radius: 20px;
+    padding: 35px;
+    transition: all 0.4s ease-in-out;
+}
+
+.project-card h3 {
+    color: silver;
+}
+
+.project-card:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 35px rgba(255, 215, 0, 0.25), 0 0 15px rgba(192,192,192,0.2);
+}
+
+/* ============================================================
+   QUOTES SECTION LUXURY
+   ============================================================ */
+
+.quotes blockquote {
+    background: #111;
+    border-left: 5px solid gold;
+    padding: 30px 25px;
+    font-style: italic;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.quotes blockquote:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 35px rgba(255,215,0,0.35);
+    color: gold;
+}
+
+/* ============================================================
+   SCHOLARSHIPS SECTION
+   ============================================================ */
+
+.scholarships p {
+    color: #d4d4d4;
+    max-width: 900px;
+}
+
+/* ============================================================
+   CONTACT SECTION
+   ============================================================ */
+
+.contact p {
+    color: #cfcfcf;
+    font-size: 1.2rem;
+}
+
+.contact p:hover {
+    color: gold;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.footer {
+    background: #0b0b0b;
+    padding: 50px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN
+   ============================================================ */
+
+@media (max-width: 768px) {
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2rem; }
+    section { padding: 60px 8%; }
+    .music-button { padding: 12px 22px; font-size: 0.9rem; }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 2.4rem; }
+    h2 { font-size: 1.6rem; }
+    .fields-grid, .projects-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   END OF FILE
+   ============================================================ */
