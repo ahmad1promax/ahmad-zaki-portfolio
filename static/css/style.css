@@ -1,193 +1,96 @@
-/* ========== الأساسيات ========== */
-:root {
-    --black: #0a0a0a;
-    --dark: #1a1a1a;
-    --darker: #111;
-    --gray: #2a2a2a;
-    --silver: #c0c0c0;
-    --gold: #FFD700;
-    --gold-light: #FFED4E;
-    --gold-dark: #B8860B;
-    --accent: #00D4FF;
-}
-
-* {
+/* تعيين الخطوط الافتراضية */
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    background-color: #121212; /* اللون الداكن */
+    color: white;
 }
 
-body {
-    background: var(--black);
-    color: var(--silver);
-    font-family: 'Segoe UI', system-ui, sans-serif;
-    line-height: 1.6;
-    overflow-x: hidden;
-}
-
-/* ========== الهيدر وأنيميشن الخلفية ========== */
-.hero {
-    background: 
-        radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(192, 192, 192, 0.05) 0%, transparent 50%),
-        linear-gradient(135deg, var(--darker) 0%, var(--black) 100%);
-    position: relative;
-    overflow: hidden;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-}
-
-/* ========== الصورة الشخصية ========== */
-/* ضع صورتك في: static/images/profile.jpg */
-.profile-container {
-    position: relative;
-    width: 300px;
-    height: 300px;
-    margin: 0 auto;
-}
-
-.profile-image {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid var(--gold);
-    box-shadow: 
-        0 0 50px rgba(255, 215, 0, 0.3),
-        inset 0 0 30px rgba(255, 215, 0, 0.2);
-    animation: float 6s ease-in-out infinite;
-}
-
-/* ========== الكروت والأقسام ========== */
-.section {
-    padding: 100px 20px;
-    position: relative;
-}
-
-.gold-card {
-    background: linear-gradient(145deg, rgba(26, 26, 26, 0.9), rgba(10, 10, 10, 0.9));
-    border: 1px solid rgba(255, 215, 0, 0.2);
-    border-radius: 20px;
-    padding: 40px;
-    backdrop-filter: blur(10px);
-    box-shadow: 
-        0 10px 40px rgba(0, 0, 0, 0.5),
-        0 0 20px rgba(255, 215, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.gold-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 
-        0 20px 60px rgba(0, 0, 0, 0.7),
-        0 0 30px rgba(255, 215, 0, 0.2);
-}
-
-/* ========== أزرار ذهبية ========== */
-.gold-btn {
-    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-    color: var(--black);
-    border: none;
-    padding: 15px 35px;
-    border-radius: 50px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-}
-
-.gold-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
-}
-
-/* ========== شبكة التواصل ========== */
-.contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-top: 40px;
-}
-
-.contact-card {
-    background: rgba(42, 42, 42, 0.5);
-    border-left: 4px solid var(--gold);
-    padding: 25px;
-    border-radius: 10px;
-    transition: all 0.3s;
-}
-
-.contact-card:hover {
-    background: rgba(255, 215, 0, 0.1);
-    transform: translateX(10px);
-}
-
-/* ========== أقوال ملهمة ========== */
-.quote-slider {
-    background: rgba(255, 215, 0, 0.05);
-    border-left: 5px solid var(--gold);
-    padding: 30px;
-    margin: 40px 0;
-    border-radius: 0 15px 15px 0;
-}
-
-.quote-author {
-    color: var(--gold);
-    font-style: italic;
-    margin-top: 15px;
-    text-align: right;
-}
-
-/* ========== صور المشاهير والناجحين ========== */
-.icons-grid {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-    margin: 50px 0;
-}
-
-.icon-item {
+/* تصميم قسم الرئيسية */
+.home {
     text-align: center;
-    transition: transform 0.3s;
+    padding: 50px 0;
+    background-color: #1f1f1f; /* خلفية داكنة */
 }
 
-.icon-item:hover {
-    transform: scale(1.2);
+.home h1 {
+    font-size: 3em;
+    color: #fff;
 }
 
-.icon-item i {
-    font-size: 3rem;
-    color: var(--gold);
-    margin-bottom: 10px;
+.home p {
+    font-size: 1.5em;
+    color: #c0c0c0; /* اللون الفضي */
 }
 
-/* ========== أنيميشن ========== */
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
+/* تصميم قسم عني */
+.about {
+    padding: 50px;
+    background-color: #1f1f1f;
+    color: #fff;
 }
 
-@keyframes glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
-    50% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.6); }
+.about h2 {
+    font-size: 2.5em;
+    color: #ffd700; /* اللون الذهبي */
 }
 
-/* ========== تصميم متجاوب ========== */
-@media (max-width: 768px) {
-    .profile-container {
-        width: 200px;
-        height: 200px;
-    }
-    
-    .section {
-        padding: 60px 15px;
-    }
-    
-    .gold-card {
-        padding: 25px;
-    }
+.about p {
+    font-size: 1.2em;
+    color: #c0c0c0;
+}
+
+/* تصميم قسم المنح */
+.scholarships {
+    padding: 50px;
+    background-color: #121212;
+    color: #fff;
+}
+
+.scholarships h2 {
+    font-size: 2.5em;
+    color: #ffd700; /* اللون الذهبي */
+}
+
+/* تصميم قسم مقولات تحفيزية */
+.quotes {
+    padding: 50px;
+    background-color: #1f1f1f;
+    color: #fff;
+}
+
+.quotes h2 {
+    font-size: 2.5em;
+    color: #ffd700; /* اللون الذهبي */
+}
+
+.quotes blockquote {
+    font-size: 1.5em;
+    font-style: italic;
+    color: #c0c0c0;
+    border-left: 5px solid #ffd700; /* إضافة خط جانبي باللون الذهبي */
+    margin-left: 30px;
+    padding-left: 15px;
+}
+
+/* تصميم قسم التواصل */
+.contact {
+    padding: 50px;
+    background-color: #121212;
+    color: #fff;
+}
+
+.contact h2 {
+    font-size: 2.5em;
+    color: #ffd700; /* اللون الذهبي */
+}
+
+/* إضافة تأثيرات عند التمرير أو التحرك */
+section {
+    transition: all 0.3s ease;
+}
+
+section:hover {
+    background-color: #333;
 }
