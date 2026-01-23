@@ -1,0 +1,182 @@
+/* ============================================================
+   animations.css
+   ملف الأنيميشن السينمائي الكامل للموقع
+   Author: Ahmed Zaki Portfolio
+   ============================================================ */
+
+
+/* ============================================================
+   الإعدادات العامة للأنيميشن
+   ============================================================ */
+
+/*
+   في البداية نخفي كل الأقسام
+   لكي تظهر لاحقًا مع التمرير
+*/
+section {
+    opacity: 0;
+    transform: translateY(80px);
+    transition: 
+        opacity 1.2s ease,
+        transform 1.2s ease;
+}
+
+/*
+   عند إضافة كلاس show
+   يظهر القسم بسلاسة
+*/
+section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ============================================================
+   HERO ANIMATION
+   ============================================================ */
+
+/*
+   أنيميشن نبض ذهبي للاسم
+*/
+@keyframes goldPulse {
+    0% {
+        text-shadow: 0 0 5px gold;
+    }
+    50% {
+        text-shadow: 0 0 25px gold;
+    }
+    100% {
+        text-shadow: 0 0 5px gold;
+    }
+}
+
+.hero h1 {
+    animation: goldPulse 3s infinite;
+}
+
+
+/*
+   أنيميشن دخول العنوان الفرعي
+*/
+@keyframes fadeSlide {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero h2 {
+    animation: fadeSlide 1.5s ease forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+}
+
+
+/* ============================================================
+   ABOUT SECTION ANIMATION
+   ============================================================ */
+
+/*
+   تكبير الصورة الشخصية عند المرور
+*/
+.profile-img {
+    transition: 
+        transform 0.6s ease,
+        box-shadow 0.6s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 35px rgba(255, 215, 0, 0.8);
+}
+
+
+/* ============================================================
+   FIELDS LIST ANIMATION
+   ============================================================ */
+
+/*
+   أنيميشن ظهور متدرج لعناصر القائمة
+*/
+.fields li {
+    opacity: 0;
+    transform: translateX(-40px);
+    animation: listReveal 0.8s ease forwards;
+}
+
+.fields li:nth-child(1) { animation-delay: 0.2s; }
+.fields li:nth-child(2) { animation-delay: 0.4s; }
+.fields li:nth-child(3) { animation-delay: 0.6s; }
+.fields li:nth-child(4) { animation-delay: 0.8s; }
+
+@keyframes listReveal {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* ============================================================
+   QUOTES ANIMATION
+   ============================================================ */
+
+/*
+   تحريك الاقتباسات عند المرور
+*/
+.quotes blockquote {
+    transition: 
+        transform 0.6s ease,
+        color 0.6s ease,
+        box-shadow 0.6s ease;
+    padding: 20px;
+}
+
+.quotes blockquote:hover {
+    transform: scale(1.05);
+    color: gold;
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
+}
+
+
+/* ============================================================
+   CONTACT SECTION ANIMATION
+   ============================================================ */
+
+/*
+   وميض خفيف عند المرور
+*/
+.contact p {
+    transition: color 0.4s ease;
+}
+
+.contact p:hover {
+    color: gold;
+}
+
+
+/* ============================================================
+   BUTTON ANIMATION (Music Button)
+   ============================================================ */
+
+/*
+   نبض خفيف للزر لجذب الانتباه
+*/
+@keyframes buttonPulse {
+    0%   { box-shadow: 0 0 5px gold; }
+    50%  { box-shadow: 0 0 20px gold; }
+    100% { box-shadow: 0 0 5px gold; }
+}
+
+.music-button {
+    animation: buttonPulse 2.5s infinite;
+}
+
+
+/* ============================================================
+   نهاية ملف الأنيميشن
+   ============================================================ */
