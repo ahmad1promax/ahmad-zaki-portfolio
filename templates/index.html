@@ -2,53 +2,236 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Ahmed Zaki | Legendary Creative Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Creative Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+
+    <!-- =========================================================
+         ربط ملفات CSS
+         ========================================================= -->
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/animations.css">
+    <link rel="stylesheet" href="/static/css/luxury.css">
 </head>
+
 <body>
-    <!-- الرئيسية Home -->
-    <section class="home">
-        <h1>Welcome to My Creative Portfolio</h1>
-        <p>Exploring the world of design, animation, and AI.</p>
-        <!-- هنا يمكنك إضافة صورة خلفية متحركة أو رسوم متحركة أخرى -->
-        <audio id="background-music" autoplay loop>
-            <source src="music.mp3" type="audio/mp3">
-        </audio>
-    </section>
-    
-    <!-- عنّي About Me -->
-    <section class="about">
-        <h2>About Me</h2>
-        <p>Hello, my name is Ahmed Zaki. I specialize in design, animation, and artificial intelligence.</p>
-        <p>Contact me at: <a href="mailto:a7med1.zaki@gmail.com">a7med1.zaki@gmail.com</a></p>
-        <p>Phone: +79185786926</p>
-        <p>WhatsApp: Available upon request</p>
-        <!-- مكان إضافة صورتك الشخصية مستقبلاً -->
-    </section>
-    
-    <!-- المنح Scholarships -->
-    <section class="scholarships">
-        <h2>Scholarships</h2>
-        <p>Learn more about the scholarships I am applying for in design, animation, programming, and AI.</p>
-        <!-- قسم يعرض المنح التي تقدمت إليها ويمكن إضافة تفاصيل أو روابط إضافية -->
-    </section>
 
-    <!-- مقولات تحفيزية Inspirational Quotes -->
-    <section class="quotes">
-        <h2>Inspirational Quotes</h2>
-        <blockquote>"Success is not final, failure is not fatal: it is the courage to continue that counts." – Winston Churchill</blockquote>
-        <blockquote>"Freedom is the power to choose without fear." – Nelson Mandela</blockquote>
-        <!-- هنا يمكنك إضافة مقولات إضافية -->
-    </section>
+<!-- =========================================================
+     زر تشغيل الموسيقى (BUTTON)
+     ========================================================= -->
+<button id="musicBtn" class="music-button">
+    ▶ Play Epic Music
+</button>
 
-    <!-- التواصل Contact -->
-    <section class="contact">
-        <h2>Contact Me</h2>
-        <p>You can reach me via email or WhatsApp!</p>
-        <!-- إضافة روابط تواصل -->
-    </section>
+<audio id="bgMusic">
+    <source src="/static/music/epic.mp3" type="audio/mpeg">
+</audio>
+
+<!-- =========================================================
+     HERO SECTION
+     ========================================================= -->
+<section class="hero">
+    <div class="hero-inner">
+        <h1>Ahmed Zaki</h1>
+        <h2>Design • Animation • Programming • Artificial Intelligence</h2>
+        <p>
+            I am a multidisciplinary creator driven by freedom, perseverance,
+            and the belief that creativity combined with technology can change lives.
+        </p>
+    </div>
+</section>
+
+<!-- =========================================================
+     ABOUT ME
+     ========================================================= -->
+<section class="about">
+    <h2>About Me</h2>
+
+    <!-- =====================================================
+         🔴 ضع صورتك الشخصية هنا
+         static/images/your_photo.png
+         ===================================================== -->
+    <img src="/static/images/your_photo.png" alt="Ahmed Zaki" class="profile-img">
+
+    <p>
+        My name is Ahmed Zaki. I am deeply passionate about design, animation,
+        software development, and artificial intelligence.
+        I see creativity as a form of freedom, and technology as a powerful tool
+        to transform imagination into reality.
+    </p>
+
+    <p>
+        My goal is to contribute to the world by building meaningful digital
+        experiences that inspire, educate, and empower others.
+    </p>
+</section>
+
+<!-- =========================================================
+     VISION & PHILOSOPHY
+     ========================================================= -->
+<section class="vision">
+    <h2>Vision & Philosophy</h2>
+
+    <p>
+        I believe that true success comes from perseverance,
+        continuous learning, and the courage to explore the unknown.
+    </p>
+
+    <p>
+        My philosophy is built on three pillars:
+    </p>
+
+    <ul>
+        <li>Freedom of creativity</li>
+        <li>Discipline in execution</li>
+        <li>Responsibility toward society</li>
+    </ul>
+</section>
+
+<!-- =========================================================
+     FIELDS OF EXCELLENCE
+     ========================================================= -->
+<section class="fields">
+    <h2>Fields of Excellence</h2>
+
+    <div class="fields-grid">
+        <div class="field-card">
+            <h3>Creative Design</h3>
+            <p>
+                Visual identity, UI/UX design, branding,
+                and artistic composition.
+            </p>
+        </div>
+
+        <div class="field-card">
+            <h3>Animation & Motion</h3>
+            <p>
+                2D & 3D animation, motion graphics,
+                storytelling through movement.
+            </p>
+        </div>
+
+        <div class="field-card">
+            <h3>Programming</h3>
+            <p>
+                Web development, backend systems,
+                problem solving through code.
+            </p>
+        </div>
+
+        <div class="field-card">
+            <h3>Artificial Intelligence</h3>
+            <p>
+                Intelligent systems, automation,
+                and creative AI applications.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================
+     PROJECTS & WORK
+     ========================================================= -->
+<section class="projects">
+    <h2>Selected Projects</h2>
+
+    <!-- =====================================================
+         🔴 يمكنك إضافة أو حذف مشاريع بحرية
+         ===================================================== -->
+    <div class="projects-grid">
+
+        <div class="project-card">
+            <h3>Creative Animation Project</h3>
+            <p>
+                A conceptual animation project exploring
+                freedom and human potential.
+            </p>
+        </div>
+
+        <div class="project-card">
+            <h3>AI-Based Application</h3>
+            <p>
+                An intelligent system designed to assist
+                creativity and productivity.
+            </p>
+        </div>
+
+        <div class="project-card">
+            <h3>Web Platform</h3>
+            <p>
+                A modern web platform combining aesthetics,
+                performance, and usability.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- =========================================================
+     INSPIRATIONAL QUOTES
+     ========================================================= -->
+<section class="quotes">
+    <h2>Inspirational Quotes</h2>
+
+    <blockquote>
+        “Freedom lies in being bold.” – Robert Frost
+    </blockquote>
+
+    <blockquote>
+        “Perseverance is not a long race; it is many short races one after another.”
+    </blockquote>
+
+    <blockquote>
+        “Success usually comes to those who are too busy to be looking for it.”
+    </blockquote>
+
+    <blockquote>
+        “Creativity is intelligence having fun.” – Albert Einstein
+    </blockquote>
+</section>
+
+<!-- =========================================================
+     SCHOLARSHIPS STATEMENT
+     ========================================================= -->
+<section class="scholarships">
+    <h2>Scholarship Motivation</h2>
+
+    <p>
+        I am applying for scholarships to further develop my skills,
+        expand my academic knowledge, and contribute to global innovation.
+    </p>
+
+    <p>
+        With the support of these opportunities, I aim to reach my full
+        potential and give back to the community through impactful projects.
+    </p>
+</section>
+
+<!-- =========================================================
+     CONTACT
+     ========================================================= -->
+<section class="contact">
+    <h2>Contact</h2>
+
+    <p>Email: a7med1.zaki@gmail.com</p>
+    <p>Phone: +79185786926</p>
+    <p>WhatsApp & Telegram available</p>
+</section>
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+<footer class="footer">
+    <p>
+        © 2026 Ahmed Zaki — Legendary Creative Portfolio
+    </p>
+</footer>
+
+<!-- =========================================================
+     ربط ملفات JavaScript
+     ========================================================= -->
+<script src="/static/js/core.js"></script>
+<script src="/static/js/animations.js"></script>
+<script src="/static/js/sound.js"></script>
 
 </body>
 </html>
