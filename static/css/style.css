@@ -217,7 +217,7 @@ section:hover {
 /* ========== إصلاح عاجل للصورة ========== */
 
 /* 1. إجبار جميع الصور على الظهور دائرية */
-img[src*="your_photo"], 
+img[src*="your_photo.png"], 
 img[src*="profile"],
 .profile-perfect-circle {
     border-radius: 50% !important;
@@ -232,7 +232,7 @@ img[src*="profile"],
 /* 2. إجبار الحاوية على القص */
 .profile-master-container,
 .profile-circle-forcer,
-div:has(img[src*="your_photo"]) {
+div:has(img[src*="your_photo.png"]) {
     width: 300px !important;
     height: 300px !important;
     border-radius: 50% !important;
