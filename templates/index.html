@@ -46,11 +46,23 @@
 <section class="about">
     <h2>About Me</h2>
 
-    <!-- =====================================================
-         🔴 ضع صورتك الشخصية هنا
-         static/images/your_photo.png
-         ===================================================== -->
-    <img src="/static/images/your_photo.png" alt="Ahmed Zaki" class="your-photo.png">
+    <!-- ========== الصورة الشخصية - your-photo.png ========== -->
+<div class="profile-master-container">
+    <div class="profile-circle-forcer">
+        <img src="{{ url_for('static', filename='images/your-photo.png') }}" 
+             alt="Ahmad Zaki"
+             class="profile-perfect-circle"
+             onerror="
+                 this.style.display='none';
+                 this.parentElement.innerHTML = `
+                     <div class='avatar-fallback'>
+                         <div class='gold-initials'>AZ</div>
+                         <div class='avatar-subtitle'>Ahmad Zaki</div>
+                     </div>
+                 `;
+             ">
+    </div>
+</div>
 
     <p>
         My name is Ahmed Zaki. I am deeply passionate about design, animation,
