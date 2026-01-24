@@ -214,3 +214,46 @@ section:hover {
         font-size: 80px;
     }
 }
+/* ========== إصلاح عاجل للصورة ========== */
+
+/* 1. إجبار جميع الصور على الظهور دائرية */
+img[src*="your_photo"], 
+img[src*="profile"],
+.profile-perfect-circle {
+    border-radius: 50% !important;
+    width: 300px !important;
+    height: 300px !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    display: block !important;
+    margin: 0 auto !important;
+}
+
+/* 2. إجبار الحاوية على القص */
+.profile-master-container,
+.profile-circle-forcer,
+div:has(img[src*="your_photo"]) {
+    width: 300px !important;
+    height: 300px !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    border: 5px solid #FFD700 !important;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.5) !important;
+    margin: 40px auto !important;
+    position: relative !important;
+}
+
+/* 3. إخفاء أي صورة كبيرة */
+img {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+/* 4. إصلاح خاص للصورة your_photo */
+img[src*="your_photo.png"] {
+    transform: scale(0.8) !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) scale(0.8) !important;
+}
