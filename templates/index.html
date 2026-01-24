@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmad Zaki | Creative Visionary Portfolio</title>
+    <title>Ahmad Zaki | Digital Artisan Portfolio</title>
     
-    <!-- Font Awesome للايقونات -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- جوجل فونت للخط العربي -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     
     <!-- CSS الخاص بنا -->
@@ -16,14 +16,6 @@
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>">
-    
-    <style>
-        /* CSS مؤقت داخل HTML للتأكد من الشغل */
-        .temp-fix { 
-            border-radius: 50% !important; 
-            overflow: hidden !important; 
-        }
-    </style>
 </head>
 
 <body class="dark-theme">
@@ -38,13 +30,11 @@
     <!-- ========== NAVIGATION ========== -->
     <nav class="main-nav">
         <div class="nav-container">
-            <!-- الشعار -->
             <a href="#home" class="nav-logo">
                 <span class="logo-icon">👑</span>
                 <span class="logo-text">Ahmad Zaki</span>
             </a>
             
-            <!-- قائمة التنقل -->
             <ul class="nav-menu">
                 <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
@@ -53,7 +43,6 @@
                 <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
             </ul>
             
-            <!-- زر القائمة للموبايل -->
             <button class="nav-toggle" id="navToggle">
                 <i class="fas fa-bars"></i>
             </button>
@@ -64,14 +53,14 @@
     <section id="home" class="hero-section">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <!-- الصورة الشخصية في الهيرو -->
+            <!-- الصورة الشخصية -->
             <div class="hero-profile-container">
                 <div class="golden-frame">
                     <div class="image-clipper">
                         <img src="{{ url_for('static', filename='images/your_photo.png') }}" 
-                             alt="Ahmad Zaki - Creative Developer"
+                             alt="Ahmad Zaki"
                              class="hero-profile-image"
-                             onerror="this.onerror=null; this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=AhmadZaki&backgroundColor=000000&hairColor=ffd700&accessories=sunglasses&accessoriesColor=ffd700'">
+                             onerror="this.onerror=null; this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=AhmadZaki&backgroundColor=000000&hairColor=ffd700'">
                     </div>
                 </div>
             </div>
@@ -85,8 +74,7 @@
                 <h2 class="hero-subtitle">Digital Artisan & Code Alchemist</h2>
                 <p class="hero-description">
                     I create immersive digital experiences that blend <span class="highlight">art</span>, 
-                    <span class="highlight">technology</span>, and <span class="highlight">innovation</span>. 
-                    Turning complex ideas into elegant solutions.
+                    <span class="highlight">technology</span>, and <span class="highlight">innovation</span>.
                 </p>
                 
                 <!-- الإحصائيات -->
@@ -132,7 +120,6 @@
             </div>
             
             <div class="about-content">
-                <!-- الصورة الثانية (أصغر) -->
                 <div class="about-image">
                     <div class="profile-frame-sm">
                         <img src="{{ url_for('static', filename='images/your_photo.png') }}" 
@@ -141,22 +128,10 @@
                     </div>
                 </div>
                 
-                <!-- النص -->
                 <div class="about-text">
                     <h3>Hello, I'm Ahmad</h3>
-                    <p>
-                        I'm a passionate creative developer with over 5 years of experience in building 
-                        digital experiences that matter. My journey started with a simple line of code 
-                        and evolved into a lifelong passion for creating beauty through technology.
-                    </p>
+                    <p>I'm a passionate creative developer with over 5 years of experience in building digital experiences that matter.</p>
                     
-                    <p>
-                        I believe that <strong class="gold-text">great design</strong> and 
-                        <strong class="gold-text">solid code</strong> should work together seamlessly 
-                        to create experiences that are not only functional but also emotionally resonant.
-                    </p>
-                    
-                    <!-- معلومات شخصية -->
                     <div class="personal-info">
                         <div class="info-item">
                             <span class="info-label"><i class="fas fa-user-tag"></i> Name:</span>
@@ -175,11 +150,6 @@
                             <span class="info-value">Global Digital Nomad</span>
                         </div>
                     </div>
-                    
-                    <!-- ملف PDF -->
-                    <a href="#" class="btn btn-outline-gold">
-                        <i class="fas fa-download"></i> Download CV
-                    </a>
                 </div>
             </div>
         </div>
@@ -194,7 +164,6 @@
             </div>
             
             <div class="skills-container">
-                <!-- المهارات التقنية -->
                 <div class="skill-category">
                     <h3><i class="fas fa-code"></i> Technical Skills</h3>
                     <div class="skills-grid">
@@ -207,7 +176,6 @@
                                 <div class="skill-progress" style="width: 95%"></div>
                             </div>
                         </div>
-                        
                         <div class="skill-item">
                             <div class="skill-header">
                                 <span class="skill-name">UI/UX Design</span>
@@ -217,20 +185,9 @@
                                 <div class="skill-progress" style="width: 90%"></div>
                             </div>
                         </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">Python/Flask</span>
-                                <span class="skill-percent">88%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 88%"></div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 
-                <!-- المهارات الإبداعية -->
                 <div class="skill-category">
                     <h3><i class="fas fa-paint-brush"></i> Creative Skills</h3>
                     <div class="skills-grid">
@@ -243,7 +200,6 @@
                                 <div class="skill-progress" style="width: 92%"></div>
                             </div>
                         </div>
-                        
                         <div class="skill-item">
                             <div class="skill-header">
                                 <span class="skill-name">Animation</span>
@@ -253,30 +209,54 @@
                                 <div class="skill-progress" style="width: 85%"></div>
                             </div>
                         </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">Creative Direction</span>
-                                <span class="skill-percent">87%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 87%"></div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- ========== SOUNDS & MUSIC SECTION ========== -->
+    <section class="sounds-section">
+        <div class="container">
+            <h2 class="section-title">Creative <span class="gold-text">Soundscape</span></h2>
+            <p class="section-subtitle">Immersive audio experiences</p>
             
-            <!-- أيقونات التقنيات -->
-            <div class="tech-icons">
-                <div class="tech-icon" title="HTML5"><i class="fab fa-html5"></i></div>
-                <div class="tech-icon" title="CSS3"><i class="fab fa-css3-alt"></i></div>
-                <div class="tech-icon" title="JavaScript"><i class="fab fa-js"></i></div>
-                <div class="tech-icon" title="Python"><i class="fab fa-python"></i></div>
-                <div class="tech-icon" title="Flask"><i class="fas fa-flask"></i></div>
-                <div class="tech-icon" title="Git"><i class="fab fa-git-alt"></i></div>
-                <div class="tech-icon" title="Figma"><i class="fab fa-figma"></i></div>
-                <div class="tech-icon" title="Adobe Creative"><i class="fas fa-palette"></i></div>
+            <div class="sounds-grid">
+                <div class="sound-card">
+                    <div class="sound-icon">🎵</div>
+                    <h3>Code Symphony</h3>
+                    <p>Music generated from programming algorithms</p>
+                    <audio controls class="audio-player">
+                        <source src="https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3" type="audio/mpeg">
+                    </audio>
+                    <button class="btn btn-sound" data-sound="1">
+                        <i class="fas fa-play"></i> Play
+                    </button>
+                </div>
+                
+                <div class="sound-card">
+                    <div class="sound-icon">🌊</div>
+                    <h3>Digital Ocean</h3>
+                    <p>Ambient sounds of the digital world</p>
+                    <audio controls class="audio-player">
+                        <source src="https://assets.mixkit.co/music/preview/mixkit-deep-urban-623.mp3" type="audio/mpeg">
+                    </audio>
+                    <button class="btn btn-sound" data-sound="2">
+                        <i class="fas fa-play"></i> Play
+                    </button>
+                </div>
+                
+                <div class="sound-card">
+                    <div class="sound-icon">⚡</div>
+                    <h3>Neural Beats</h3>
+                    <p>Focus music for programming sessions</p>
+                    <audio controls class="audio-player">
+                        <source src="https://assets.mixkit.co/music/preview/mixkit-game-show-suspense-waiting-667.mp3" type="audio/mpeg">
+                    </audio>
+                    <button class="btn btn-sound" data-sound="3">
+                        <i class="fas fa-play"></i> Play
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -290,14 +270,13 @@
             </div>
             
             <div class="projects-grid">
-                <!-- المشروع 1 -->
                 <div class="project-card">
                     <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
                         <div class="project-badge">AI</div>
                     </div>
                     <div class="project-content">
                         <h3>Neural Art Generator</h3>
-                        <p>AI-powered platform that transforms text into unique digital artworks using neural networks.</p>
+                        <p>AI-powered platform that transforms text into unique digital artworks.</p>
                         <div class="project-tags">
                             <span class="tag">Python</span>
                             <span class="tag">TensorFlow</span>
@@ -310,38 +289,16 @@
                     </div>
                 </div>
                 
-                <!-- المشروع 2 -->
                 <div class="project-card">
                     <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
                         <div class="project-badge">WebGL</div>
                     </div>
                     <div class="project-content">
                         <h3>3D Data Visualizer</h3>
-                        <p>Interactive 3D visualization tool for complex datasets with real-time rendering.</p>
+                        <p>Interactive 3D visualization tool for complex datasets.</p>
                         <div class="project-tags">
                             <span class="tag">Three.js</span>
                             <span class="tag">WebGL</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                            <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- المشروع 3 -->
-                <div class="project-card">
-                    <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                        <div class="project-badge">Mobile</div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Interactive Story App</h3>
-                        <p>Mobile application for creating and experiencing interactive stories with dynamic narratives.</p>
-                        <div class="project-tags">
-                            <span class="tag">React Native</span>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">MongoDB</span>
                         </div>
                         <div class="project-links">
                             <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
@@ -350,12 +307,127 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- ========== ANIMATED QUOTES SECTION ========== -->
+    <section class="animated-quotes bg-dark">
+        <div class="container">
+            <h2 class="section-title">Wisdom <span class="gold-text">In Motion</span></h2>
+            <p class="section-subtitle">Inspirational quotes with animated typography</p>
             
-            <!-- عرض كل المشاريع -->
-            <div class="text-center">
-                <a href="#" class="btn btn-gold">
-                    <i class="fas fa-th-large"></i> View All Projects
-                </a>
+            <div class="quotes-slider">
+                <div class="quote-item active">
+                    <div class="quote-text typing-animation">
+                        "The only way to do great work is to love what you do."
+                    </div>
+                    <div class="quote-author pulse">- Steve Jobs</div>
+                    <div class="quote-tags">
+                        <span class="tag">Success</span>
+                        <span class="tag">Passion</span>
+                    </div>
+                </div>
+                
+                <div class="quote-item">
+                    <div class="quote-text">
+                        "Innovation distinguishes between a leader and a follower."
+                    </div>
+                    <div class="quote-author">- Steve Jobs</div>
+                    <div class="quote-tags">
+                        <span class="tag">Innovation</span>
+                        <span class="tag">Leadership</span>
+                    </div>
+                </div>
+                
+                <div class="quotes-controls">
+                    <button class="quote-prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="quote-next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== INTERACTIVE APPS SECTION ========== -->
+    <section class="fun-apps">
+        <div class="container">
+            <h2 class="section-title">Interactive <span class="gold-text">Playground</span></h2>
+            <p class="section-subtitle">Fun apps I created for entertainment & learning</p>
+            
+            <div class="apps-grid">
+                <div class="app-card">
+                    <div class="app-header">
+                        <div class="app-icon">🎨</div>
+                        <h3>Pixel Art Creator</h3>
+                    </div>
+                    <div class="app-description">
+                        Create retro pixel art in your browser. Choose colors and paint!
+                    </div>
+                    <div class="app-canvas" id="pixelCanvas">
+                        <div class="pixel-grid" id="pixelGrid"></div>
+                    </div>
+                    <div class="app-controls">
+                        <div class="color-picker">
+                            <div class="color gold active" data-color="#FFD700"></div>
+                            <div class="color silver" data-color="#C0C0C0"></div>
+                            <div class="color accent" data-color="#00D4FF"></div>
+                        </div>
+                        <button class="btn btn-sm" id="clearCanvas">Clear</button>
+                    </div>
+                </div>
+                
+                <div class="app-card">
+                    <div class="app-header">
+                        <div class="app-icon">⏰</div>
+                        <h3>Smart Clock</h3>
+                    </div>
+                    <div class="app-description">
+                        Interactive clock with multiple themes and timezone support
+                    </div>
+                    <div class="clock-container">
+                        <div class="clock-face">
+                            <div class="clock-center"></div>
+                            <div class="hour-hand" id="hourHand"></div>
+                            <div class="minute-hand" id="minuteHand"></div>
+                            <div class="second-hand" id="secondHand"></div>
+                        </div>
+                        <div class="digital-time" id="digitalTime">00:00:00</div>
+                    </div>
+                    <div class="clock-controls">
+                        <button class="btn btn-sm" id="themeToggle">Theme</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ADVANCED ANIMATIONS ========== -->
+    <section class="animations-showcase">
+        <div class="container">
+            <h2 class="section-title">Motion <span class="gold-text">Magic</span></h2>
+            <p class="section-subtitle">Advanced animations with pure CSS & JavaScript</p>
+            
+            <div class="animations-grid">
+                <div class="animation-item">
+                    <div class="animation-box">
+                        <div class="floating-cube">
+                            <div class="cube-face front">👁️</div>
+                            <div class="cube-face back">💡</div>
+                            <div class="cube-face right">⚡</div>
+                            <div class="cube-face left">🎨</div>
+                        </div>
+                    </div>
+                    <h4>3D Cube</h4>
+                    <p>CSS 3D transform animation</p>
+                </div>
+                
+                <div class="animation-item">
+                    <div class="animation-box">
+                        <div class="particles-container" id="particles"></div>
+                    </div>
+                    <h4>Particles System</h4>
+                    <p>Interactive particle physics</p>
+                    <button class="btn btn-sm" id="emitParticles">Emit</button>
+                </div>
             </div>
         </div>
     </section>
@@ -369,13 +441,10 @@
             </div>
             
             <div class="contact-container">
-                <!-- معلومات التواصل -->
                 <div class="contact-info">
                     <h3>Contact Information</h3>
-                    <p>Feel free to reach out for collaborations, opportunities, or just a friendly chat about tech and creativity.</p>
                     
                     <div class="contact-details">
-                        <!-- WhatsApp -->
                         <div class="contact-item">
                             <div class="contact-icon whatsapp">
                                 <i class="fab fa-whatsapp"></i>
@@ -387,7 +456,6 @@
                             </div>
                         </div>
                         
-                        <!-- Telegram -->
                         <div class="contact-item">
                             <div class="contact-icon telegram">
                                 <i class="fab fa-telegram"></i>
@@ -399,7 +467,6 @@
                             </div>
                         </div>
                         
-                        <!-- Email -->
                         <div class="contact-item">
                             <div class="contact-icon email">
                                 <i class="fas fa-envelope"></i>
@@ -410,45 +477,21 @@
                                 <a href="mailto:a7med1.zaki@gmail.com" class="contact-link">Send Email</a>
                             </div>
                         </div>
-                        
-                        <!-- GitHub -->
-                        <div class="contact-item">
-                            <div class="contact-icon github">
-                                <i class="fab fa-github"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>GitHub</h4>
-                                <p>ahmad1promax</p>
-                                <a href="https://github.com/ahmad1promax" target="_blank" class="contact-link">View Profile</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 
-                <!-- نموذج التواصل -->
                 <div class="contact-form">
                     <h3>Send a Message</h3>
                     <form id="contactForm">
                         <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" placeholder="Your Name" required>
                         </div>
-                        
                         <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" placeholder="Email Address" required>
                         </div>
-                        
                         <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required>
+                            <textarea placeholder="Your Message" rows="5" required></textarea>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Your Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        
                         <button type="submit" class="btn btn-gold">
                             <i class="fas fa-paper-plane"></i> Send Message
                         </button>
@@ -462,7 +505,6 @@
     <footer class="main-footer">
         <div class="container">
             <div class="footer-content">
-                <!-- الشعار -->
                 <div class="footer-section">
                     <a href="#home" class="footer-logo">
                         <span class="logo-icon">👑</span>
@@ -473,30 +515,21 @@
                     </p>
                 </div>
                 
-                <!-- روابط سريعة -->
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul class="footer-links">
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About</a></li>
-                        <li><a href="#skills">Skills</a></li>
                         <li><a href="#projects">Projects</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 
-                <!-- وسائل التواصل الاجتماعي -->
                 <div class="footer-section">
                     <h4>Connect With Me</h4>
                     <div class="social-links">
                         <a href="https://github.com/ahmad1promax" target="_blank" class="social-link">
                             <i class="fab fa-github"></i>
-                        </a>
-                        <a href="#" target="_blank" class="social-link">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="#" target="_blank" class="social-link">
-                            <i class="fab fa-twitter"></i>
                         </a>
                         <a href="https://wa.me/79185786926" target="_blank" class="social-link">
                             <i class="fab fa-whatsapp"></i>
@@ -508,7 +541,6 @@
                 </div>
             </div>
             
-            <!-- حقوق النشر -->
             <div class="footer-bottom">
                 <p>&copy; <span id="currentYear">2024</span> Ahmad Zaki. All Rights Reserved.</p>
                 <p>Made with <i class="fas fa-heart" style="color: #ff4757;"></i> and <i class="fas fa-code" style="color: #ffd700;"></i></p>
@@ -518,19 +550,15 @@
 
     <!-- ========== JAVASCRIPT ========== -->
     <script>
-        // JavaScript بسيط للتأكد من الشغل
         document.addEventListener('DOMContentLoaded', function() {
             // إخفاء شاشة التحميل
-            const loadingScreen = document.getElementById('loadingScreen');
-            if (loadingScreen) {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').style.opacity = '0';
                 setTimeout(() => {
-                    loadingScreen.style.opacity = '0';
-                    setTimeout(() => {
-                        loadingScreen.style.display = 'none';
-                    }, 500);
-                }, 1000);
-            }
-            
+                    document.getElementById('loadingScreen').style.display = 'none';
+                }, 500);
+            }, 1000);
+
             // القائمة المتنقلة
             const navToggle = document.getElementById('navToggle');
             const navMenu = document.querySelector('.nav-menu');
@@ -543,14 +571,117 @@
                         : '<i class="fas fa-bars"></i>';
                 });
             }
-            
+
             // تحديث السنة
             document.getElementById('currentYear').textContent = new Date().getFullYear();
-            
-            // التأكد من أن الصورة دائري
-            const profileImages = document.querySelectorAll('img[src*="your_photo"]');
-            profileImages.forEach(img => {
-                img.classList.add('temp-fix');
+
+            // إدارة الأصوات
+            document.querySelectorAll('.btn-sound').forEach((btn, index) => {
+                btn.addEventListener('click', () => {
+                    const audio = document.querySelectorAll('.audio-player')[index];
+                    if (audio.paused) {
+                        audio.play();
+                        btn.innerHTML = '<i class="fas fa-pause"></i> Pause';
+                    } else {
+                        audio.pause();
+                        btn.innerHTML = '<i class="fas fa-play"></i> Play';
+                    }
+                });
+            });
+
+            // مقولات متحركة
+            const quotes = document.querySelectorAll('.quote-item');
+            let currentQuote = 0;
+
+            document.querySelector('.quote-next')?.addEventListener('click', () => {
+                quotes[currentQuote].classList.remove('active');
+                currentQuote = (currentQuote + 1) % quotes.length;
+                quotes[currentQuote].classList.add('active');
+            });
+
+            document.querySelector('.quote-prev')?.addEventListener('click', () => {
+                quotes[currentQuote].classList.remove('active');
+                currentQuote = (currentQuote - 1 + quotes.length) % quotes.length;
+                quotes[currentQuote].classList.add('active');
+            });
+
+            // بيكسل آرت
+            const pixelGrid = document.getElementById('pixelGrid');
+            if (pixelGrid) {
+                for (let i = 0; i < 100; i++) {
+                    const pixel = document.createElement('div');
+                    pixel.classList.add('pixel');
+                    pixel.addEventListener('click', function() {
+                        const activeColor = document.querySelector('.color.active')?.getAttribute('data-color') || '#FFD700';
+                        this.style.backgroundColor = activeColor;
+                    });
+                    pixelGrid.appendChild(pixel);
+                }
+
+                document.querySelectorAll('.color').forEach(color => {
+                    color.addEventListener('click', function() {
+                        document.querySelectorAll('.color').forEach(c => c.classList.remove('active'));
+                        this.classList.add('active');
+                    });
+                });
+
+                document.getElementById('clearCanvas')?.addEventListener('click', () => {
+                    document.querySelectorAll('.pixel').forEach(pixel => {
+                        pixel.style.backgroundColor = '#333';
+                    });
+                });
+            }
+
+            // الساعة الذكية
+            function updateClock() {
+                const now = new Date();
+                const hours = now.getHours();
+                const minutes = now.getMinutes();
+                const seconds = now.getSeconds();
+                
+                const hourDeg = (hours % 12) * 30 + minutes * 0.5;
+                const minuteDeg = minutes * 6;
+                const secondDeg = seconds * 6;
+                
+                const hourHand = document.getElementById('hourHand');
+                const minuteHand = document.getElementById('minuteHand');
+                const secondHand = document.getElementById('secondHand');
+                const digitalTime = document.getElementById('digitalTime');
+                
+                if (hourHand) hourHand.style.transform = `rotate(${hourDeg}deg)`;
+                if (minuteHand) minuteHand.style.transform = `rotate(${minuteDeg}deg)`;
+                if (secondHand) secondHand.style.transform = `rotate(${secondDeg}deg)`;
+                if (digitalTime) digitalTime.textContent = 
+                    `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+
+            setInterval(updateClock, 1000);
+            updateClock();
+
+            document.getElementById('themeToggle')?.addEventListener('click', () => {
+                const clockFace = document.querySelector('.clock-face');
+                clockFace.style.borderColor = clockFace.style.borderColor === 'var(--silver)' ? 'var(--gold)' : 'var(--silver)';
+            });
+
+            // نظام الجسيمات
+            document.getElementById('emitParticles')?.addEventListener('click', function() {
+                const container = document.getElementById('particles');
+                for (let i = 0; i < 30; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    particle.style.left = `${Math.random() * 100}%`;
+                    particle.style.top = `${Math.random() * 100}%`;
+                    container.appendChild(particle);
+                    
+                    setTimeout(() => particle.remove(), 2000);
+                }
+            });
+
+            // نموذج الاتصال
+            document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you! Your message has been sent. I will respond soon.');
+                this.reset();
             });
         });
     </script>
