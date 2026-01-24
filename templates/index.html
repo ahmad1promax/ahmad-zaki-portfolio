@@ -1,250 +1,558 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <title>Ahmed Zaki | Legendary Creative Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- =========================================================
-         ربط ملفات CSS
-         ========================================================= -->
-    <link rel="stylesheet" href="/static/css/main.css">
-    <link rel="stylesheet" href="/static/css/animations.css">
-    <link rel="stylesheet" href="/static/css/luxury.css">
+    <title>Ahmad Zaki | Creative Visionary Portfolio</title>
+    
+    <!-- Font Awesome للايقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- جوجل فونت للخط العربي -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS الخاص بنا -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>">
+    
+    <style>
+        /* CSS مؤقت داخل HTML للتأكد من الشغل */
+        .temp-fix { 
+            border-radius: 50% !important; 
+            overflow: hidden !important; 
+        }
+    </style>
 </head>
 
-<body>
-
-<!-- =========================================================
-     زر تشغيل الموسيقى (BUTTON)
-     ========================================================= -->
-<button id="musicBtn" class="music-button">
-    ▶ Play Epic Music
-</button>
-
-<audio id="bgMusic">
-    <source src="/static/music/epic.mp3" type="audio/mpeg">
-</audio>
-
-<!-- =========================================================
-     HERO SECTION
-     ========================================================= -->
-<section class="hero">
-    <div class="hero-inner">
-        <h1>Ahmed Zaki</h1>
-        <h2>Design • Animation • Programming • Artificial Intelligence</h2>
-        <p>
-            I am a multidisciplinary creator driven by freedom, perseverance,
-            and the belief that creativity combined with technology can change lives.
-        </p>
-    </div>
-</section>
-
-<!-- =========================================================
-     ABOUT ME
-     ========================================================= -->
-<section class="about">
-    <h2>About Me</h2>
-
-    <!-- ========== الصورة الشخصية - your-photo.png ========== -->
-<div class="profile-master-container">
-    <div class="profile-circle-forcer">
-        <img src="{{ url_for('static', filename='images/your_photo.png') }}" 
-             alt="Ahmad Zaki"
-             class="profile-perfect-circle"
-             onerror="
-                 this.style.display='none';
-                 this.parentElement.innerHTML = `
-                     <div class='avatar-fallback'>
-                         <div class='gold-initials'>AZ</div>
-                         <div class='avatar-subtitle'>Ahmad Zaki</div>
-                     </div>
-                 `;
-             ">
-    </div>
-</div>
-
-    <p>
-        My name is Ahmed Zaki. I am deeply passionate about design, animation,
-        software development, and artificial intelligence.
-        I see creativity as a form of freedom, and technology as a powerful tool
-        to transform imagination into reality.
-    </p>
-
-    <p>
-        My goal is to contribute to the world by building meaningful digital
-        experiences that inspire, educate, and empower others.
-    </p>
-</section>
-
-<!-- =========================================================
-     VISION & PHILOSOPHY
-     ========================================================= -->
-<section class="vision">
-    <h2>Vision & Philosophy</h2>
-
-    <p>
-        I believe that true success comes from perseverance,
-        continuous learning, and the courage to explore the unknown.
-    </p>
-
-    <p>
-        My philosophy is built on three pillars:
-    </p>
-
-    <ul>
-        <li>Freedom of creativity</li>
-        <li>Discipline in execution</li>
-        <li>Responsibility toward society</li>
-    </ul>
-</section>
-
-<!-- =========================================================
-     FIELDS OF EXCELLENCE
-     ========================================================= -->
-<section class="fields">
-    <h2>Fields of Excellence</h2>
-
-    <div class="fields-grid">
-        <div class="field-card">
-            <h3>Creative Design</h3>
-            <p>
-                Visual identity, UI/UX design, branding,
-                and artistic composition.
-            </p>
-        </div>
-
-        <div class="field-card">
-            <h3>Animation & Motion</h3>
-            <p>
-                2D & 3D animation, motion graphics,
-                storytelling through movement.
-            </p>
-        </div>
-
-        <div class="field-card">
-            <h3>Programming</h3>
-            <p>
-                Web development, backend systems,
-                problem solving through code.
-            </p>
-        </div>
-
-        <div class="field-card">
-            <h3>Artificial Intelligence</h3>
-            <p>
-                Intelligent systems, automation,
-                and creative AI applications.
-            </p>
+<body class="dark-theme">
+    <!-- ========== LOADING SCREEN ========== -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="gold-spinner"></div>
+            <p class="loading-text">Loading Creative Universe...</p>
         </div>
     </div>
-</section>
 
-<!-- =========================================================
-     PROJECTS & WORK
-     ========================================================= -->
-<section class="projects">
-    <h2>Selected Projects</h2>
-
-    <!-- =====================================================
-         🔴 يمكنك إضافة أو حذف مشاريع بحرية
-         ===================================================== -->
-    <div class="projects-grid">
-
-        <div class="project-card">
-            <h3>Creative Animation Project</h3>
-            <p>
-                A conceptual animation project exploring
-                freedom and human potential.
-            </p>
+    <!-- ========== NAVIGATION ========== -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <!-- الشعار -->
+            <a href="#home" class="nav-logo">
+                <span class="logo-icon">👑</span>
+                <span class="logo-text">Ahmad Zaki</span>
+            </a>
+            
+            <!-- قائمة التنقل -->
+            <ul class="nav-menu">
+                <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+                <li><a href="#skills"><i class="fas fa-star"></i> Skills</a></li>
+                <li><a href="#projects"><i class="fas fa-briefcase"></i> Projects</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+            
+            <!-- زر القائمة للموبايل -->
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
+    </nav>
 
-        <div class="project-card">
-            <h3>AI-Based Application</h3>
-            <p>
-                An intelligent system designed to assist
-                creativity and productivity.
-            </p>
+    <!-- ========== HERO SECTION ========== -->
+    <section id="home" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <!-- الصورة الشخصية في الهيرو -->
+            <div class="hero-profile-container">
+                <div class="golden-frame">
+                    <div class="image-clipper">
+                        <img src="{{ url_for('static', filename='images/your_photo.png') }}" 
+                             alt="Ahmad Zaki - Creative Developer"
+                             class="hero-profile-image"
+                             onerror="this.onerror=null; this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=AhmadZaki&backgroundColor=000000&hairColor=ffd700&accessories=sunglasses&accessoriesColor=ffd700'">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- النص -->
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="gold-text">Ahmad</span> 
+                    <span class="silver-text">Zaki</span>
+                </h1>
+                <h2 class="hero-subtitle">Digital Artisan & Code Alchemist</h2>
+                <p class="hero-description">
+                    I create immersive digital experiences that blend <span class="highlight">art</span>, 
+                    <span class="highlight">technology</span>, and <span class="highlight">innovation</span>. 
+                    Turning complex ideas into elegant solutions.
+                </p>
+                
+                <!-- الإحصائيات -->
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">80+</div>
+                        <div class="stat-label">Projects Delivered</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">60+</div>
+                        <div class="stat-label">Happy Clients</div>
+                    </div>
+                </div>
+                
+                <!-- أزرار -->
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-gold">
+                        <i class="fas fa-eye"></i> View My Work
+                    </a>
+                    <a href="#contact" class="btn btn-silver">
+                        <i class="fas fa-paper-plane"></i> Contact Me
+                    </a>
+                </div>
+            </div>
         </div>
+        
+        <!-- مؤشر التمرير -->
+        <a href="#about" class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
 
-        <div class="project-card">
-            <h3>Web Platform</h3>
-            <p>
-                A modern web platform combining aesthetics,
-                performance, and usability.
-            </p>
+    <!-- ========== ABOUT SECTION ========== -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About <span class="gold-text">Me</span></h2>
+                <p class="section-subtitle">The mind behind the magic</p>
+            </div>
+            
+            <div class="about-content">
+                <!-- الصورة الثانية (أصغر) -->
+                <div class="about-image">
+                    <div class="profile-frame-sm">
+                        <img src="{{ url_for('static', filename='images/your_photo.png') }}" 
+                             alt="Ahmad Zaki"
+                             class="profile-image-sm">
+                    </div>
+                </div>
+                
+                <!-- النص -->
+                <div class="about-text">
+                    <h3>Hello, I'm Ahmad</h3>
+                    <p>
+                        I'm a passionate creative developer with over 5 years of experience in building 
+                        digital experiences that matter. My journey started with a simple line of code 
+                        and evolved into a lifelong passion for creating beauty through technology.
+                    </p>
+                    
+                    <p>
+                        I believe that <strong class="gold-text">great design</strong> and 
+                        <strong class="gold-text">solid code</strong> should work together seamlessly 
+                        to create experiences that are not only functional but also emotionally resonant.
+                    </p>
+                    
+                    <!-- معلومات شخصية -->
+                    <div class="personal-info">
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-user-tag"></i> Name:</span>
+                            <span class="info-value">Ahmad Zaki</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-envelope"></i> Email:</span>
+                            <span class="info-value">a7med1.zaki@gmail.com</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-phone"></i> Phone:</span>
+                            <span class="info-value">+7 918 578-69-26</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-map-marker-alt"></i> Location:</span>
+                            <span class="info-value">Global Digital Nomad</span>
+                        </div>
+                    </div>
+                    
+                    <!-- ملف PDF -->
+                    <a href="#" class="btn btn-outline-gold">
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
+                </div>
+            </div>
         </div>
+    </section>
 
-    </div>
-</section>
+    <!-- ========== SKILLS SECTION ========== -->
+    <section id="skills" class="section bg-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">My <span class="gold-text">Skills</span></h2>
+                <p class="section-subtitle">Tools & technologies I master</p>
+            </div>
+            
+            <div class="skills-container">
+                <!-- المهارات التقنية -->
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Technical Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Web Development</span>
+                                <span class="skill-percent">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">UI/UX Design</span>
+                                <span class="skill-percent">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Python/Flask</span>
+                                <span class="skill-percent">88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 88%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- المهارات الإبداعية -->
+                <div class="skill-category">
+                    <h3><i class="fas fa-paint-brush"></i> Creative Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Visual Design</span>
+                                <span class="skill-percent">92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 92%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Animation</span>
+                                <span class="skill-percent">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Creative Direction</span>
+                                <span class="skill-percent">87%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 87%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- أيقونات التقنيات -->
+            <div class="tech-icons">
+                <div class="tech-icon" title="HTML5"><i class="fab fa-html5"></i></div>
+                <div class="tech-icon" title="CSS3"><i class="fab fa-css3-alt"></i></div>
+                <div class="tech-icon" title="JavaScript"><i class="fab fa-js"></i></div>
+                <div class="tech-icon" title="Python"><i class="fab fa-python"></i></div>
+                <div class="tech-icon" title="Flask"><i class="fas fa-flask"></i></div>
+                <div class="tech-icon" title="Git"><i class="fab fa-git-alt"></i></div>
+                <div class="tech-icon" title="Figma"><i class="fab fa-figma"></i></div>
+                <div class="tech-icon" title="Adobe Creative"><i class="fas fa-palette"></i></div>
+            </div>
+        </div>
+    </section>
 
-<!-- =========================================================
-     INSPIRATIONAL QUOTES
-     ========================================================= -->
-<section class="quotes">
-    <h2>Inspirational Quotes</h2>
+    <!-- ========== PROJECTS SECTION ========== -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured <span class="gold-text">Projects</span></h2>
+                <p class="section-subtitle">A glimpse of my creative work</p>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- المشروع 1 -->
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <div class="project-badge">AI</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Neural Art Generator</h3>
+                        <p>AI-powered platform that transforms text into unique digital artworks using neural networks.</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">TensorFlow</span>
+                            <span class="tag">React</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- المشروع 2 -->
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <div class="project-badge">WebGL</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>3D Data Visualizer</h3>
+                        <p>Interactive 3D visualization tool for complex datasets with real-time rendering.</p>
+                        <div class="project-tags">
+                            <span class="tag">Three.js</span>
+                            <span class="tag">WebGL</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- المشروع 3 -->
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <div class="project-badge">Mobile</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Interactive Story App</h3>
+                        <p>Mobile application for creating and experiencing interactive stories with dynamic narratives.</p>
+                        <div class="project-tags">
+                            <span class="tag">React Native</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MongoDB</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- عرض كل المشاريع -->
+            <div class="text-center">
+                <a href="#" class="btn btn-gold">
+                    <i class="fas fa-th-large"></i> View All Projects
+                </a>
+            </div>
+        </div>
+    </section>
 
-    <blockquote>
-        “Freedom lies in being bold.” – Robert Frost
-    </blockquote>
+    <!-- ========== CONTACT SECTION ========== -->
+    <section id="contact" class="section bg-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get In <span class="gold-text">Touch</span></h2>
+                <p class="section-subtitle">Let's create something amazing together</p>
+            </div>
+            
+            <div class="contact-container">
+                <!-- معلومات التواصل -->
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p>Feel free to reach out for collaborations, opportunities, or just a friendly chat about tech and creativity.</p>
+                    
+                    <div class="contact-details">
+                        <!-- WhatsApp -->
+                        <div class="contact-item">
+                            <div class="contact-icon whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>WhatsApp</h4>
+                                <p>+7 918 578-69-26</p>
+                                <a href="https://wa.me/79185786926" target="_blank" class="contact-link">Send Message</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Telegram -->
+                        <div class="contact-item">
+                            <div class="contact-icon telegram">
+                                <i class="fab fa-telegram"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Telegram</h4>
+                                <p>@ahmed_zaki</p>
+                                <a href="https://t.me/ahmed_zaki" target="_blank" class="contact-link">Send Message</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Email -->
+                        <div class="contact-item">
+                            <div class="contact-icon email">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>a7med1.zaki@gmail.com</p>
+                                <a href="mailto:a7med1.zaki@gmail.com" class="contact-link">Send Email</a>
+                            </div>
+                        </div>
+                        
+                        <!-- GitHub -->
+                        <div class="contact-item">
+                            <div class="contact-icon github">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>GitHub</h4>
+                                <p>ahmad1promax</p>
+                                <a href="https://github.com/ahmad1promax" target="_blank" class="contact-link">View Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- نموذج التواصل -->
+                <div class="contact-form">
+                    <h3>Send a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-gold">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <blockquote>
-        “Perseverance is not a long race; it is many short races one after another.”
-    </blockquote>
+    <!-- ========== FOOTER ========== -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- الشعار -->
+                <div class="footer-section">
+                    <a href="#home" class="footer-logo">
+                        <span class="logo-icon">👑</span>
+                        <span class="logo-text">Ahmad Zaki</span>
+                    </a>
+                    <p class="footer-description">
+                        Creating digital experiences that inspire, engage, and transform.
+                    </p>
+                </div>
+                
+                <!-- روابط سريعة -->
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- وسائل التواصل الاجتماعي -->
+                <div class="footer-section">
+                    <h4>Connect With Me</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/ahmad1promax" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" target="_blank" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://wa.me/79185786926" target="_blank" class="social-link">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://t.me/ahmed_zaki" target="_blank" class="social-link">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- حقوق النشر -->
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear">2024</span> Ahmad Zaki. All Rights Reserved.</p>
+                <p>Made with <i class="fas fa-heart" style="color: #ff4757;"></i> and <i class="fas fa-code" style="color: #ffd700;"></i></p>
+            </div>
+        </div>
+    </footer>
 
-    <blockquote>
-        “Success usually comes to those who are too busy to be looking for it.”
-    </blockquote>
-
-    <blockquote>
-        “Creativity is intelligence having fun.” – Albert Einstein
-    </blockquote>
-</section>
-
-<!-- =========================================================
-     SCHOLARSHIPS STATEMENT
-     ========================================================= -->
-<section class="scholarships">
-    <h2>Scholarship Motivation</h2>
-
-    <p>
-        I am applying for scholarships to further develop my skills,
-        expand my academic knowledge, and contribute to global innovation.
-    </p>
-
-    <p>
-        With the support of these opportunities, I aim to reach my full
-        potential and give back to the community through impactful projects.
-    </p>
-</section>
-
-<!-- =========================================================
-     CONTACT
-     ========================================================= -->
-<section class="contact">
-    <h2>Contact</h2>
-
-    <p>Email: a7med1.zaki@gmail.com</p>
-    <p>Phone: +79185786926</p>
-    <p>WhatsApp & Telegram available</p>
-</section>
-
-<!-- =========================================================
-     FOOTER
-     ========================================================= -->
-<footer class="footer">
-    <p>
-        © 2026 Ahmed Zaki — Legendary Creative Portfolio
-    </p>
-</footer>
-
-<!-- =========================================================
-     ربط ملفات JavaScript
-     ========================================================= -->
-<script src="/static/js/core.js"></script>
-<script src="/static/js/animations.js"></script>
-<script src="/static/js/sound.js"></script>
-
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        // JavaScript بسيط للتأكد من الشغل
+        document.addEventListener('DOMContentLoaded', function() {
+            // إخفاء شاشة التحميل
+            const loadingScreen = document.getElementById('loadingScreen');
+            if (loadingScreen) {
+                setTimeout(() => {
+                    loadingScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                    }, 500);
+                }, 1000);
+            }
+            
+            // القائمة المتنقلة
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                    navToggle.innerHTML = navMenu.classList.contains('active') 
+                        ? '<i class="fas fa-times"></i>' 
+                        : '<i class="fas fa-bars"></i>';
+                });
+            }
+            
+            // تحديث السنة
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // التأكد من أن الصورة دائري
+            const profileImages = document.querySelectorAll('img[src*="your_photo"]');
+            profileImages.forEach(img => {
+                img.classList.add('temp-fix');
+            });
+        });
+    </script>
 </body>
 </html>
